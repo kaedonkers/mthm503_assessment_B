@@ -1,0 +1,54 @@
+---
+title: "B. Health Impact Analysis"
+author: "Kevin Donkers (EI CDT) - 700063874"
+date: "12/01/2021"
+output:
+  bookdown::html_document2:
+    fig_caption: yes
+    number_sections: false
+    smart: no
+  bookdown::pdf_document2:
+    fig_caption: yes
+    number_sections: false
+    toc: false
+---
+```{r setup, include=FALSE}
+library(here)
+library(bookdown)
+# knitr::opts_chunk$set(echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, include=FALSE)
+knitr::opts_chunk$set(echo=TRUE, message=TRUE, cache=FALSE, warning=FALSE, include=TRUE)
+knitr::read_chunk(here::here('scripts/load_data.R'))
+```
+
+
+```{r load_data, include=FALSE}
+```
+
+# Q1. Summarise the number of hospital admissions for COPD in England between 2001 and 2010.
+
+- England-wide trend
+- ten bar charts showing each authority, initially with them sorted?
+
+```{r 1.summary}
+```
+
+
+# Q2. Estimate raw and smoothed standardised morbidity ratios (SMR). You should look for any spatial(!) patterns and/or extreme values and consider any potential reasons for them. You should note any differences between raw and the smoothed estimates. If there are big changes, are they appropriate?
+
+
+- What are raw vs smoothed SMRs?
+- Do I need to calculate a yearly SMR or is it over the whole period?
+- Steps:
+1. xxx
+2. Calculate SMR for each region (for each year?) 
+3. Plot and compare
+
+
+
+
+# Q3. Investigate any changes in the risks of hospitalisation due to COPD in England over time.
+
+
+
+
+# Q4. Suppose a government minister wants to increase resources to hospitals to cope with admissions for COPD. Write a short report (maximum 1 page text) recommending key areas/local authorities in England where these resources should be allocated. In your answer you should explain the key steps of the analysis you have done, providing comment on what conclusions you can draw and any limitations associated. You do not need to include every step of the analyses, but should include results, figures and tables that support your findings. Ensure any plots and/or tables included are labelled clearly and are accompanied with appropriate captions.
