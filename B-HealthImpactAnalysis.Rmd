@@ -15,23 +15,43 @@ output:
 ```{r setup, include=FALSE}
 library(here)
 library(bookdown)
-# knitr::opts_chunk$set(echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, include=FALSE)
-knitr::opts_chunk$set(echo=TRUE, message=TRUE, cache=FALSE, warning=FALSE, include=TRUE)
-knitr::read_chunk(here::here('scripts/load_data.R'))
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, cache=TRUE, warning=FALSE, include=FALSE)
+# knitr::opts_chunk$set(echo=TRUE, message=TRUE, cache=FALSE, warning=FALSE, include=TRUE)
+knitr::read_chunk(here::here('scripts/question1.R'))
 ```
 
 
-```{r load_data, include=FALSE}
+```{r load_data}
 ```
 
 # Q1. Summarise the number of hospital admissions for COPD in England between 2001 and 2010.
 
-- England-wide trend
-- ten bar charts showing each authority, initially with them sorted?
+Data for hospital admissions for COPD in England are provided in the `copdobserved.csv` dataset. We can summarise the data as follows:
 
-```{r 1.summary}
+```{r 1.summary, include=TRUE}
 ```
 
+From this we can see that for the whole of England over the ten years of data collected some local authorities reported zero cases, while the maximum number of cases in one local authority was 480 in a year. The country as a whole experienced an average of 67.0 annual cases of COPD per local authority.
+
+To determine whether there was any overall trend in the total number of cases reported in England each year we can plot a line graph:
+
+```{r 1.time.sum.data}
+```
+```{r 1.time.sum.plot, include=TRUE}
+```
+
+From this graph we can see that there is no overall trend in the total number of cases of COPD in England over the 2001-2010 period. Therefore we can determine that nationally the total number of cases are steady over time.
+
+We can summarise the spatial spread of the data by plotting the mean number of cases for each local authority over the ten year time period onto a map:
+
+```{r 1.eng.mean.data}
+```
+```{r 1.eng.mean.map, include=TRUE}
+```
+
+From this a notable few regions stand out as having particularly high average cases. These are the North East of England, the urban North of England, Birmingham and Cornwall. The high average cases in urban North of England could be explained by more exposure to air pollution than in more rural areas, as could the higher cases in the North East and Birmingham. Perhaps the (former) industrial nature of these regions plays a part as well. Cornwall is a more rural county, so higher cases here might be explained by the higher prevelance of radon gas in houses due to the local type of stone used to build them. 
+
+To conclude, there is a relatively large spread in the number of cases of COPD per local authority in England, with some notable hotspots. There does not seems to be a time trend at a national level over the ten years of data.
 
 # Q2. Estimate raw and smoothed standardised morbidity ratios (SMR). You should look for any spatial(!) patterns and/or extreme values and consider any potential reasons for them. You should note any differences between raw and the smoothed estimates. If there are big changes, are they appropriate?
 
