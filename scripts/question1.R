@@ -1,29 +1,10 @@
 # Code for question 1
 
-## @knitr load_data
+## @knitr 1.init
 
-library(tidyverse)
-library(here)
-library(readr)
-library(spdep)
-library(sf)
-library(CARBayes)
-library(rgdal)
-library(rgeos)
 library(colorspace)
 library(ggplot2)
 
-obs <- read_csv(here::here("data/copdobserved.csv")) %>%
-    gather("year.str", "observed", -Name) %>%
-    mutate(year=as.integer(str_replace(year.str, "Y", ""))) %>%
-    rename("name"="Name") %>%
-    select(-year.str)
-    
-expd <- read_csv(here::here("data/copdexpected.csv")) %>%
-    gather("year.str", "expected", -Name) %>%
-    mutate(year=as.integer(str_replace(year.str, "E", ""))) %>%
-    rename("name"="Name") %>%
-    select(-year.str)
 
 ## @knitr 1.summary
 summary(obs)
@@ -51,7 +32,6 @@ ggplot(time.sum,
 
 ## @knitr 1.eng.mean.data
 
-eng.geo <- st_read(here::here('data/englandlocalauthority/englandlocalauthority.shp'))
 
 eng.mean <- obs %>%
     group_by(name) %>%
