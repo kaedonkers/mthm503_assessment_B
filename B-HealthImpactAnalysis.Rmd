@@ -17,7 +17,9 @@ library(here)
 library(bookdown)
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, cache=TRUE, warning=FALSE, include=FALSE)
 # knitr::opts_chunk$set(echo=TRUE, message=TRUE, cache=FALSE, warning=FALSE, include=TRUE)
+knitr::read_chunk(here::here('scripts/init.R'))
 knitr::read_chunk(here::here('scripts/question1.R'))
+knitr::read_chunk(here::here('scripts/question2.R'))
 ```
 
 
@@ -25,6 +27,9 @@ knitr::read_chunk(here::here('scripts/question1.R'))
 ```
 
 # Q1. Summarise the number of hospital admissions for COPD in England between 2001 and 2010.
+
+```{r 1.init}
+```
 
 Data for hospital admissions for COPD in England are provided in the `copdobserved.csv` dataset. We can summarise the data as follows:
 
@@ -55,14 +60,25 @@ To conclude, there is a relatively large spread in the number of cases of COPD p
 
 # Q2. Estimate raw and smoothed standardised morbidity ratios (SMR). You should look for any spatial(!) patterns and/or extreme values and consider any potential reasons for them. You should note any differences between raw and the smoothed estimates. If there are big changes, are they appropriate?
 
+Raw SMRs can be calculated by simply calculating the ratio between observed and expected admissions for COPD for each year and local authority. Unfortunately smoothed SMRs could not be calculate for this assessment because every time a model was initiated R crashed with a "fatal error". Given this (unhelpful) error message I was not able to debug and get the model to run.
 
-- What are raw vs smoothed SMRs?
-- Do I need to calculate a yearly SMR or is it over the whole period?
-- Steps:
-1. xxx
-2. Calculate SMR for each region (for each year?) 
-3. Plot and compare
+Plotting raw SMR values on a map of England highlights a different spread of cases to that of the mean values mapped in question 1:
 
+```{r 2.init}
+```
+```{r 2.raw.smrs}
+```
+```{r 2.map.smrs, include=TRUE}
+```
+
+We can see that conclusions from question 1 about urban and industrial areas (North East and Northern England) having higher COPD cases due to poorer air quality holds up. Conclusions about Cornwall having high COPD case numbers due to radon exposure now appear to be moot given the raw SMR values are around 1. Therefore the high average cases in Cornwall are likely due to demographic effects i.e. aged population.
+
+We can pick out the top ten highest mean raw SMRs and display them in a table:
+
+```{r 2.top.smrs, include=TRUE}
+```
+
+After a bit of research these locations are either large cities (e.g. Liverpool), part of large cities (e.g. Tower Hamlets) or industrial towns (e.g. Corby). It is notable also that many of these locations tend to be to the east of large cities, which tend to be down-wind of city centres given that prevailing winds tend to be westerly. Therefore poor air quality in the centre of cities can affect those living downwind as well as in city centres.
 
 
 
