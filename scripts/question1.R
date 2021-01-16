@@ -27,7 +27,7 @@ ggplot(time.sum,
          y = "Number of cases") +
     scale_x_continuous(breaks=seq(2000, 2010, by=2), 
                        labels=seq(2000, 2010, by=2),
-                       limits=c(2000, 2010)) +
+                       limits=c(2001, 2010)) +
     scale_y_continuous(limits=c(0, 25000))
 
 ## @knitr 1.eng.mean.data

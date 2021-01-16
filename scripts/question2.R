@@ -73,6 +73,8 @@ smr.data %>%
     arrange(desc(mean.smr)) %>%
     slice(1:10)
 
+
+
 # smr.data %>%
 #     group_by(name) %>%
 #     summarise(mean.smr=mean(smr.raw)) %>%
