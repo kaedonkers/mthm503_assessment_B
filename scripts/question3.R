@@ -21,7 +21,8 @@ ggplot(smr.data,
 smr.data %>%
     filter(year==2010) %>%
     arrange(desc(smr.raw)) %>%
-    slice(1:10)
+    slice(1:10) %>%
+    knitr::kable(caption="Ten local authorities with the highest raw SMR values in 2010.")
 
 ## @knitr 3.obs.time.plot
 ggplot(obs,
@@ -36,3 +37,7 @@ ggplot(obs,
     scale_y_continuous(trans="log10") +
     theme(legend.position = "none")
 
+## @knitr 3.pairs.plot
+library(GGally)
+
+ggpairs(smr.data, 2:ncol(smr.data))

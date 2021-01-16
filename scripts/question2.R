@@ -71,7 +71,8 @@ smr.data %>%
     group_by(name) %>%
     summarise(mean.smr=mean(smr.raw)) %>%
     arrange(desc(mean.smr)) %>%
-    slice(1:10)
+    slice(1:10) %>%
+    knitr::kable(caption="Ten local authorities with the highest average raw SMR values for period 2001-2010.")
 
 
 

@@ -1,7 +1,7 @@
 ---
-title: "B. Health Impact Analysis"
+title: "ADSS Assessment: B. Health Impact Analysis"
 author: "Kevin Donkers (EI CDT) - 700063874"
-date: "12/01/2021"
+date: "16/01/2021"
 output:
   bookdown::pdf_document2:
     fig_caption: yes
@@ -37,44 +37,45 @@ Data for hospital admissions for COPD in England are provided in the `copdobserv
 ```{r 1.summary, include=TRUE}
 ```
 
-From this we can see that for the whole of England over the ten years of data collected some local authorities reported zero cases, while the maximum number of cases in one local authority was 480 in a year. The country as a whole experienced an average of 67.0 annual cases of COPD per local authority.
+From \@ref(fig:1.summary) we can see that for the whole of England over the ten years of data collected some local authorities reported zero cases, while the maximum number of cases in one local authority was 480 in a year. The country as a whole experienced an average of 67.0 annual cases of COPD per local authority.
 
 To determine whether there was any overall trend in the total number of cases reported in England each year we can plot a line graph:
 
 ```{r 1.time.sum.data}
 ```
-```{r 1.time.sum.plot, include=TRUE, fig.height=2}
+```{r 1.time.sum.plot, include=TRUE, fig.height=2, fig.cap="Total annual cases of COPD in England."}
 ```
 
-From this graph we can see that there is no overall trend in the total number of cases of COPD in England over the 2001-2010 period. Therefore we can determine that nationally the total number of cases are steady over time.
+From \@ref(fig:1.time.sum.plot) we can see that there is no overall trend in the total number of cases of COPD in England over the 2001-2010 period. Therefore we can determine that nationally the total number of cases are steady over time.
 
 We can summarise the spatial spread of the data by plotting the mean number of cases for each local authority over the ten year time period onto a map:
 
 ```{r 1.eng.mean.data}
 ```
-```{r 1.eng.mean.map, include=TRUE, fig.align='center'}
+```{r 1.eng.mean.map, include=TRUE, fig.align='center', fig.cap="Mean number of cases in each English loca authority in the period 2001-2010."}
 ```
 
-From this a notable few regions stand out as having particularly high average cases. These are the North East of England, the urban North of England, Birmingham and Cornwall. The high average cases in urban North of England could be explained by more exposure to air pollution than in more rural areas, as could the higher cases in the North East and Birmingham. Perhaps the (former) industrial nature of these regions plays a part as well. Cornwall is a more rural county, so higher cases here might be explained by the higher prevelance of radon gas in houses due to the local type of stone used to build them. 
+From \@ref(fig:1.eng.mean.map) a notable few regions stand out as having particularly high average cases. These are the North East of England, the urban North of England, Birmingham and Cornwall. The high average cases in urban North of England could be explained by more exposure to air pollution than in more rural areas, as could the higher cases in the North East and Birmingham. Perhaps the (former) industrial nature of these regions plays a part as well. Cornwall is a more rural county, so higher cases here might be explained by the higher prevelance of radon gas in houses due to the local type of stone used to build them. 
 
 To conclude, there is a relatively large spread in the number of cases of COPD per local authority in England, with some notable hotspots. There does not seems to be a time trend at a national level over the ten years of data.
 
+\pagebreak
 # Q2. Estimate raw and smoothed standardised morbidity ratios (SMR). You should look for any spatial(!) patterns and/or extreme values and consider any potential reasons for them. You should note any differences between raw and the smoothed estimates. If there are big changes, are they appropriate?
 
 Raw SMRs can be calculated by simply calculating the ratio between observed and expected admissions for COPD for each year and local authority. Unfortunately smoothed SMRs could not be calculate for this assessment because every time a model was initiated R crashed with a "fatal error". Given this (unhelpful) error message I was not able to debug and get the model to run.
 
-Plotting raw SMR values on a map of England highlights a different spread of cases to that of the mean values mapped in question 1:
+Plotting raw SMR values on a map of England highlights a different spread of cases to that of the mean values mapped in question 1.
 
 ```{r 2.init}
 ```
 ```{r 2.raw.smrs}
 ```
-```{r 2.map.smrs, include=TRUE, fig.align='center'}
+```{r 2.map.smrs, include=TRUE, fig.align='center', fig.cap="Mean raw SMR values in English local authorities for period 2001-2010."}
 ```
 
-We can see that conclusions from question 1 about urban and industrial areas (North East and Northern England) having higher COPD cases due to poorer air quality holds up. Conclusions about Cornwall having high COPD case numbers due to radon exposure now appear to be moot given the raw SMR values are around 1. Therefore the high average cases in Cornwall are likely due to demographic effects i.e. aged population.
+We can see in \@ref(fig:2.map.smrs) that conclusions from question 1 about urban and industrial areas (North East and Northern England) having higher COPD cases due to poorer air quality holds up. Conclusions about Cornwall having high COPD case numbers due to radon exposure now appear to be moot given the raw SMR values are around 1. Therefore the high average cases in Cornwall are likely due to demographic effects i.e. aged population.
 
-We can pick out the top ten highest mean raw SMRs and display them in a table:
+We can pick out the top ten highest mean raw SMRs and display them in table \@ref(fig:2.top.smrs).
 
 ```{r 2.top.smrs, include=TRUE}
 ```
@@ -82,32 +83,33 @@ We can pick out the top ten highest mean raw SMRs and display them in a table:
 After a bit of research these locations are either large cities (e.g. Liverpool), part of large cities (e.g. Tower Hamlets) or industrial towns (e.g. Corby). It is notable also that many of these locations tend to be to the east of large cities, which tend to be down-wind of city centres given that prevailing winds tend to be westerly. Therefore poor air quality in the centre of cities can affect those living downwind as well as in city centres.
 
 
-
+\pagebreak
 # Q3. Investigate any changes in the risks of hospitalisation due to COPD in England over time.
 
 To investigate this we can plot the calculated raw SMR values for each local authority on a line graph to try to elucidate any trends over time.
 
 ```{r 3.init}
 ```
-```{r 3.smr.time.plot, include=TRUE}
+```{r 3.smr.time.plot, include=TRUE, fig.cap="Line plot of raw SMR values for English local authorities in the period 2001-2010. Each line represents the SMR values for a particular local authority."}
 ```
 
-As we can see from this plot that there is no overall trend in SMR values for local authorities in England. There is some (expected) variability, with some particularly low and high values. One notable outlier is Corby, which sees a rapid increase in SMR value from 2008 to 2010, representing the highest SMR value in 2010 and the whole dataset. 
+As we can see from \@ref(fig:3.smr.time.plot) that there is no overall trend in SMR values for local authorities in England. There is some (expected) variability, with some particularly low and high values. One notable outlier is Corby, which sees a rapid increase in SMR value from 2008 to 2010, representing the highest SMR value in 2010 and the whole dataset. 
 
 Let's find out why that might be by picking out the ten highest SMR values in 2010.
 
 ```{r 3.top.smrs.2010, include=TRUE}
 ```
 
-We can see from the table that Corby expected to get 21.4 cases of COPD in 2010, but 51 were actually recorded in that year. These numbers are relatively low, which could suggest that the jump in SMR could be due to sampling effects of a low population. This would fit with the fact that Corby is a small town and thus has a small population, but perhaps the higher COPD cases than the national average due to a large steel works in the town.
+We can see from the table \@ref(fig:3.top.smrs.2010) that Corby expected to get 21.4 cases of COPD in 2010, but 51 were actually recorded in that year. These numbers are relatively low, which could suggest that the jump in SMR could be due to sampling effects of a low population. This would fit with the fact that Corby is a small town and thus has a small population, but perhaps the higher COPD cases than the national average due to a large steel works in the town.
 
 We can plot the raw observation data for all the local authorities in England to see whether there are any trends. If there are, it would imply that demographic changes (e.g. aging population) could be responsible for changes in observed cases, given that SMRs are broadly unchanging.
 
-```{r 3.obs.time.plot, include=TRUE, fig.height=5, fig.cap="Annual COPD cases in each English local authority. Log scale used on y-axis to make lower value lines more visible."}
+```{r 3.obs.time.plot, include=TRUE, fig.height=4, fig.cap="Annual COPD cases in each English local authority. Log scale used on y-axis to make lower value lines more visible. Each line represents the number of COPD cases for a particular local authority."}
 ```
 
-We can see from this line plot that there are no overall trends in the number of cases of COPD in England in the period 2001-2010. There is some expected variability, but no clear trend.
+We can see from \@ref(fig:3.obs.time.plot) that there are no overall trends in the number of cases of COPD in England in the period 2001-2010. There is some expected variability, but no clear trend.
 
+\pagebreak
 # Q4. Suppose a government minister wants to increase resources to hospitals to cope with admissions for COPD. Write a short report (maximum 1 page text) recommending key areas/local authorities in England where these resources should be allocated. In your answer you should explain the key steps of the analysis you have done, providing comment on what conclusions you can draw and any limitations associated. You do not need to include every step of the analyses, but should include results, figures and tables that support your findings. Ensure any plots and/or tables included are labelled clearly and are accompanied with appropriate captions.
 
 My apologies, I ran out of time to complete this question.

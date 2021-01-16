@@ -7,7 +7,8 @@ library(ggplot2)
 
 
 ## @knitr 1.summary
-summary(obs)
+# summary(obs)
+knitr::kable(summary(obs), caption="Summary of observed cases in England")
 
 
 ## @knitr 1.time.sum.data
