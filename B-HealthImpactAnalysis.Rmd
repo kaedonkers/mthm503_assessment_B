@@ -3,14 +3,14 @@ title: "B. Health Impact Analysis"
 author: "Kevin Donkers (EI CDT) - 700063874"
 date: "12/01/2021"
 output:
-  bookdown::html_document2:
-    fig_caption: yes
-    number_sections: false
-    smart: no
   bookdown::pdf_document2:
     fig_caption: yes
     number_sections: false
     toc: false
+  bookdown::html_document2:
+    fig_caption: yes
+    number_sections: false
+    smart: no
 ---
 ```{r setup, include=FALSE}
 library(here)
@@ -20,6 +20,7 @@ knitr::opts_chunk$set(echo=FALSE, message=FALSE, cache=TRUE, warning=FALSE, incl
 knitr::read_chunk(here::here('scripts/init.R'))
 knitr::read_chunk(here::here('scripts/question1.R'))
 knitr::read_chunk(here::here('scripts/question2.R'))
+knitr::read_chunk(here::here('scripts/question3.R'))
 ```
 
 
@@ -42,7 +43,7 @@ To determine whether there was any overall trend in the total number of cases re
 
 ```{r 1.time.sum.data}
 ```
-```{r 1.time.sum.plot, include=TRUE}
+```{r 1.time.sum.plot, include=TRUE, fig.height=2}
 ```
 
 From this graph we can see that there is no overall trend in the total number of cases of COPD in England over the 2001-2010 period. Therefore we can determine that nationally the total number of cases are steady over time.
@@ -51,7 +52,7 @@ We can summarise the spatial spread of the data by plotting the mean number of c
 
 ```{r 1.eng.mean.data}
 ```
-```{r 1.eng.mean.map, include=TRUE}
+```{r 1.eng.mean.map, include=TRUE, fig.align='center'}
 ```
 
 From this a notable few regions stand out as having particularly high average cases. These are the North East of England, the urban North of England, Birmingham and Cornwall. The high average cases in urban North of England could be explained by more exposure to air pollution than in more rural areas, as could the higher cases in the North East and Birmingham. Perhaps the (former) industrial nature of these regions plays a part as well. Cornwall is a more rural county, so higher cases here might be explained by the higher prevelance of radon gas in houses due to the local type of stone used to build them. 
@@ -68,7 +69,7 @@ Plotting raw SMR values on a map of England highlights a different spread of cas
 ```
 ```{r 2.raw.smrs}
 ```
-```{r 2.map.smrs, include=TRUE}
+```{r 2.map.smrs, include=TRUE, fig.align='center'}
 ```
 
 We can see that conclusions from question 1 about urban and industrial areas (North East and Northern England) having higher COPD cases due to poorer air quality holds up. Conclusions about Cornwall having high COPD case numbers due to radon exposure now appear to be moot given the raw SMR values are around 1. Therefore the high average cases in Cornwall are likely due to demographic effects i.e. aged population.
@@ -84,7 +85,29 @@ After a bit of research these locations are either large cities (e.g. Liverpool)
 
 # Q3. Investigate any changes in the risks of hospitalisation due to COPD in England over time.
 
+To investigate this we can plot the calculated raw SMR values for each local authority on a line graph to try to elucidate any trends over time.
 
+```{r 3.init}
+```
+```{r 3.smr.time.plot, include=TRUE}
+```
 
+As we can see from this plot that there is no overall trend in SMR values for local authorities in England. There is some (expected) variability, with some particularly low and high values. One notable outlier is Corby, which sees a rapid increase in SMR value from 2008 to 2010, representing the highest SMR value in 2010 and the whole dataset. 
+
+Let's find out why that might be by picking out the ten highest SMR values in 2010.
+
+```{r 3.top.smrs.2010, include=TRUE}
+```
+
+We can see from the table that Corby expected to get 21.4 cases of COPD in 2010, but 51 were actually recorded in that year. These numbers are relatively low, which could suggest that the jump in SMR could be due to sampling effects of a low population. This would fit with the fact that Corby is a small town and thus has a small population, but perhaps the higher COPD cases than the national average due to a large steel works in the town.
+
+We can plot the raw observation data for all the local authorities in England to see whether there are any trends. If there are, it would imply that demographic changes (e.g. aging population) could be responsible for changes in observed cases, given that SMRs are broadly unchanging.
+
+```{r 3.obs.time.plot, include=TRUE, fig.height=5, fig.cap="Annual COPD cases in each English local authority. Log scale used on y-axis to make lower value lines more visible."}
+```
+
+We can see from this line plot that there are no overall trends in the number of cases of COPD in England in the period 2001-2010. There is some expected variability, but no clear trend.
 
 # Q4. Suppose a government minister wants to increase resources to hospitals to cope with admissions for COPD. Write a short report (maximum 1 page text) recommending key areas/local authorities in England where these resources should be allocated. In your answer you should explain the key steps of the analysis you have done, providing comment on what conclusions you can draw and any limitations associated. You do not need to include every step of the analyses, but should include results, figures and tables that support your findings. Ensure any plots and/or tables included are labelled clearly and are accompanied with appropriate captions.
+
+My apologies, I ran out of time to complete this question.
