@@ -1,23 +1,23 @@
 # Code for question 1
 
-## @knitr 1.init
+## @knitr 1Init
 
 library(colorspace)
 library(ggplot2)
 
 
-## @knitr 1.summary
+## @knitr 1Summary
 # summary(obs)
 knitr::kable(summary(obs), caption="Summary of observed cases in England")
 
 
-## @knitr 1.time.sum.data
+## @knitr 1TimeSumData
 
 time.sum <- obs %>%
     group_by(year) %>%
     summarise(sum=sum(observed))
 
-## @knitr 1.time.sum.plot
+## @knitr 1TimeSumPlot
 
 ggplot(time.sum,
        aes(x=year, y=sum)) +
@@ -31,7 +31,7 @@ ggplot(time.sum,
                        limits=c(2001, 2010)) +
     scale_y_continuous(limits=c(0, 25000))
 
-## @knitr 1.eng.mean.data
+## @knitr 1EngMeanData
 
 
 eng.mean <- obs %>%
@@ -40,7 +40,7 @@ eng.mean <- obs %>%
 
 eng <- merge(eng.geo, eng.mean, by='name')
 
-## @knitr 1.eng.mean.map
+## @knitr 1EngMeanMap
 
 ggplot(eng, 
        aes(fill=mean)) +

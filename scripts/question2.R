@@ -1,6 +1,6 @@
 # Code for question2
 
-## @knitr 2.init
+## @knitr 2Init
 
 # library(CARBayes)
 # library(rgdal)
@@ -10,7 +10,7 @@ library(ggplot2)
 library(colorspace)
 
 
-## @knitr 2.raw.smrs
+## @knitr 2RawSmrs
 
 smr.data <- merge(obs, expd, by=c("name", "year"))
 
@@ -18,7 +18,7 @@ smr.data$smr.raw <- smr.data$observed / smr.data$expected
 
 
 
-## @knitr 2.smoothed.smrs
+## @knitr 2SmoothedSmrs
 
 # # Creates the neighbourhood
 # W.nb <- poly2nb(eng.geo, row.names = rownames(eng.geo))
@@ -39,7 +39,7 @@ smr.data$smr.raw <- smr.data$observed / smr.data$expected
 
 
 
-## @knitr 2.map.smrs
+## @knitr 2MapSmrs
 
 # smr.mean <- smr.data %>%
 #     filter(year==2010) %>%
@@ -65,7 +65,7 @@ ggplot(smr.mean,
     scale_fill_continuous_sequential(palette='Purples')
 
 
-## @knitr 2.top.smrs
+## @knitr 2TopSmrs
 
 smr.data %>%
     group_by(name) %>%

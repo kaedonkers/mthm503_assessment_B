@@ -1,9 +1,9 @@
 # Code for question 3
 
-## @knitr 3.init
+## @knitr 3Init
 library(ggplot2)
 
-## @knitr 3.smr.time.plot
+## @knitr 3SmrTimePlot
 
 ggplot(smr.data,
        aes(x=year, y=smr.raw, color=name)) +
@@ -16,7 +16,7 @@ ggplot(smr.data,
                        limits=c(2001, 2010)) +
     theme(legend.position = "none")
 
-## @knitr 3.top.smrs.2010
+## @knitr 3TopSmrs2010
 
 smr.data %>%
     filter(year==2010) %>%
@@ -24,7 +24,7 @@ smr.data %>%
     slice(1:10) %>%
     knitr::kable(caption="Ten local authorities with the highest raw SMR values in 2010.")
 
-## @knitr 3.obs.time.plot
+## @knitr 3ObsTimePlot
 ggplot(obs,
        aes(x=year, y=observed, color=name)) +
     geom_line(alpha=0.2) +
@@ -37,7 +37,7 @@ ggplot(obs,
     scale_y_continuous(trans="log10") +
     theme(legend.position = "none")
 
-## @knitr 3.pairs.plot
+## @knitr 3PairsPlot
 library(GGally)
 
 ggpairs(smr.data, 2:ncol(smr.data))
