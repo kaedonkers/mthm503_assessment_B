@@ -7,8 +7,12 @@ library(ggplot2)
 
 
 ## @knitr 1Summary
-# summary(obs)
-knitr::kable(summary(obs), caption="Summary of observed cases in England")
+
+obs %>%
+    summary() %>%
+    knitr::kable(caption="Summary of observed cases in England") %>%
+    kableExtra::kable_styling(latex_options = "HOLD_position")
+
 
 
 ## @knitr 1TimeSumData

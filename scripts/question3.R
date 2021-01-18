@@ -22,7 +22,8 @@ smr.data %>%
     filter(year==2010) %>%
     arrange(desc(smr.raw)) %>%
     slice(1:10) %>%
-    knitr::kable(caption="Ten local authorities with the highest raw SMR values in 2010.")
+    knitr::kable(caption="Ten local authorities with the highest raw SMR values in 2010.") %>%
+    kableExtra::kable_styling(latex_options = "HOLD_position")
 
 ## @knitr 3ObsTimePlot
 ggplot(obs,
